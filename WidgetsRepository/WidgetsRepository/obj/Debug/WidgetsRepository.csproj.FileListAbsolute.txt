@@ -1,0 +1,4 @@
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository\bin\Debug\WidgetsRepository.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository\bin\Debug\WidgetsRepository.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository\obj\Debug\WidgetsRepository.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository\obj\Debug\WidgetsRepository.pdb

@@ -1,0 +1,4 @@
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\bin\Debug\WidgetsRepository.DAL.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\bin\Debug\WidgetsRepository.DAL.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\obj\Debug\WidgetsRepository.DAL.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\obj\Debug\WidgetsRepository.DAL.pdb

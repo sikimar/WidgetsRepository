@@ -1,0 +1,5 @@
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.Test.exe.config
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.Test.exe
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.Test.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Test.exe
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Test.pdb

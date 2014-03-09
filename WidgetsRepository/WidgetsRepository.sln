@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetsRepository", "WidgetsRepository\WidgetsRepository.csproj", "{80CF09BD-0FD1-4AAB-9AF4-5656B0BA5EBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetsRepository.Test", "WidgetsRepository.Test\WidgetsRepository.Test.csproj", "{9361567B-A984-455D-8599-FC026DBA1F46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetsRepository.DAL", "WidgetsRepository.DAL\WidgetsRepository.DAL.csproj", "{7BA3D257-FF1C-4916-97EF-66C7E35E360B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80CF09BD-0FD1-4AAB-9AF4-5656B0BA5EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CF09BD-0FD1-4AAB-9AF4-5656B0BA5EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CF09BD-0FD1-4AAB-9AF4-5656B0BA5EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CF09BD-0FD1-4AAB-9AF4-5656B0BA5EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9361567B-A984-455D-8599-FC026DBA1F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9361567B-A984-455D-8599-FC026DBA1F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9361567B-A984-455D-8599-FC026DBA1F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9361567B-A984-455D-8599-FC026DBA1F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BA3D257-FF1C-4916-97EF-66C7E35E360B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA3D257-FF1C-4916-97EF-66C7E35E360B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA3D257-FF1C-4916-97EF-66C7E35E360B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA3D257-FF1C-4916-97EF-66C7E35E360B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
