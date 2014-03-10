@@ -8,11 +8,19 @@ namespace WidgetsRepository
 {
     public interface IEntity
     {
+        Guid Guid { get; set; }
         string Id { get; set; }
     }
 
-    public interface IWidgetEntity : IEntity
+    public interface IWidget : IEntity
     {
-        string Data { get; set; }
+        string Name { get; set; }
+        List<IWidgetData> Data { get; set; }
+    }
+
+    public interface IWidgetData : IEntity
+    {
+        string Name { get; set; }
+        object Data { get; set; }
     }
 }

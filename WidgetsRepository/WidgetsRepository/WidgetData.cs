@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository
 {
-    public class Widget : IWidget
+    public class WidgetData : IWidgetData
     {
-        public string Id { get; set; }
-        public Guid Guid {get; set;}
         public string Name { get; set; }
-        public List<IWidgetData> Data { get; set; }
+        public Guid Guid { get; set; }
+        public string Id { get; set; }
+        public object Data { get; set; }
     }
 }

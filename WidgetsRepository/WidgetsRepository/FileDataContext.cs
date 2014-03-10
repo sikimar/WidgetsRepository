@@ -22,7 +22,7 @@ namespace WidgetsRepository
             var fileInfo = _query.Find(id);
             Widget widget = new Widget();
             widget.Id = fileInfo.Id;
-            widget.Data = fileInfo.Data.ToString();
+            widget.Data = new List<IWidgetData>(){ new WidgetData(){Data = fileInfo.Data}};
             return widget;
         }
 
@@ -34,7 +34,7 @@ namespace WidgetsRepository
             {
                 Widget widget = new Widget();
                 widget.Id = fileInfo.Id;
-                widget.Data = fileInfo.Data.ToString();
+                widget.Data = new List<IWidgetData>() { new WidgetData() { Data = fileInfo.Data } };
                 widgets.Add(widget);
             }
 
