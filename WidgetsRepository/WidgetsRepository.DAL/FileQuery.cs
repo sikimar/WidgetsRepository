@@ -7,29 +7,16 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public interface IDataQuery<T, V>
+    public class FileQuery : IDataQuery<IFileSystemData<string>, string>
     {
-        List<T> GetAll();
-        T Find(V id);
-        void Insert(T data);
-        void Update(T data);
-        void Delete(T data);
-    }
+        private readonly string _directory;
 
-    public interface IFileQuery : IDataQuery<IFileSystemData, string>
-    {
-    }
-
-    public class FileQuery : IFileQuery
-    {
-        private string _directory;
-
-        public FileQuery(string directory) 
+        public FileQuery(string directory)
         {
             _directory = directory;
         }
 
-        public List<IFileSystemData> GetAll()
+        public List<IFileSystemData<string>> GetAll()
         {
             if (!Directory.Exists(_directory))
             {
@@ -43,7 +30,7 @@ namespace WidgetsRepository.DAL
             return MapList(files);
         }
 
-        public IFileSystemData Find(string name)
+        public IFileSystemData<string> Find(string name)
         {
             string filePath = Path.Combine(_directory, name);
             FileInfo fileInfo = new FileInfo(filePath);
@@ -51,28 +38,28 @@ namespace WidgetsRepository.DAL
             return Map(fileInfo);
         }
 
-        public void Insert(IFileSystemData data)
+        public void Insert(IFileSystemData<string> data)
         {
             string filePath = Path.Combine(_directory, data.Name);
             FileInfo fileinfo = new FileInfo(filePath);
             SaveContent(fileinfo, data.Data.ToString());
         }
 
-        public void Update(IFileSystemData data)
+        public void Update(IFileSystemData<string> data)
         {
             string filePath = Path.Combine(_directory, data.Name);
             FileInfo fileInfo = new FileInfo(filePath);
             SaveContent(fileInfo, data.Data.ToString());
         }
 
-        public void Delete(IFileSystemData data)
+        public void Delete(IFileSystemData<string> data)
         {
             string filePath = Path.Combine(_directory, data.Name);
             FileInfo fileInfo = new FileInfo(filePath);
             fileInfo.Delete();
         }
 
-        private IFileSystemData Map(FileInfo fileInfo) 
+        private IFileSystemData<string> Map(FileInfo fileInfo)
         {
             FileData data = new FileData();
             data.Id = fileInfo.FullName;
@@ -82,27 +69,27 @@ namespace WidgetsRepository.DAL
             return data;
         }
 
-        private List<IFileSystemData> MapList(List<FileInfo> files) 
+        private List<IFileSystemData<string>> MapList(IEnumerable<FileInfo> files)
         {
-            List<IFileSystemData> fileData = new List<IFileSystemData>();
-            foreach (FileInfo fileInfo in files) 
+            List<IFileSystemData<string>> fileData = new List<IFileSystemData<string>>();
+            foreach (FileInfo fileInfo in files)
             {
-                IFileSystemData data = Map(fileInfo);
+                IFileSystemData<string> data = Map(fileInfo);
                 fileData.Add(data);
             }
 
             return fileData;
         }
 
-        private object ReadContent(FileInfo fileInfo) 
+        private object ReadContent(FileInfo fileInfo)
         {
-            using(StreamReader streamReader = fileInfo.OpenText())
+            using (StreamReader streamReader = fileInfo.OpenText())
             {
                 return streamReader.ReadToEnd();
             }
         }
 
-        private void SaveContent(FileInfo fileInfo, string content) 
+        private void SaveContent(FileInfo fileInfo, string content)
         {
             using (StreamWriter streamWriter = fileInfo.CreateText())
             {
