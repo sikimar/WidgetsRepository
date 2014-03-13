@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget name="OrganizationInfoWidget" id="AutoMicrosite/OrganizationInfoWidget"
+		spec="1.0" width="640" height="480" jsClass="AutoMicrosite.Widget.OrganizationInfo"
+		xmlns:x="http://deepweb.ut.ee/automicrosite/OpenAjaxMetadataExtension"
+		xmlns="http://openajax.org/metadata"
+		x:min-width="100" x:max-width="9999"
+		x:min-height="100" x:max-height="9999"
+		sandbox="true"
+		scrolling="true"
+	>
+
+	<library name="jQuery" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/" version="1.7.1">
+		<require type="javascript" src="jquery.min.js"/>
+	</library>
+	<require type="javascript" src="OrganizationInfo.js"></require>
+
+	<content><![CDATA[
+		<style type="text/css">
+			#__WID__table {
+				width: 100%;
+				font-family: sans-serif;
+				border: 1px solid #CCCCCC;
+				border-collapse: collapse;
+			}
+			#__WID__table td {
+				border: 1px solid #CCCCCC;
+				padding: 0.5em;
+			}
+			#__WID__table .label {
+				font-weight: bold;
+				background-color: #FAFAFA;
+			}
+		</style>
+		<div style="width:100%;height:100%;overflow: auto;">
+			<table id="__WID__table">
+				<tbody>
+					<tr>
+						<td class="label">Legal name</td>
+						<td class="value" id="__WID__legalName"></td>
+					</tr>
+					<tr>
+						<td class="label">Registration code</td>
+						<td class="value" id="__WID__taxID"></td>
+					</tr>
+					<tr>
+						<td class="label">Establishment year</td>
+						<td class="value" id="__WID__establishmentYear"></td>
+					</tr>
+					<tr>
+						<td class="label">Address</td>
+						<td class="value" id="__WID__address"></td>
+					</tr>
+					<tr>
+						<td class="label">Description of field</td>
+						<td class="value" id="__WID__description"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	]]></content>
+
+	<topic name="AutoMicrosite.Table.OrganizationData" type="object" subscribe="true">
+		<description>
+			Show organization data in a table
+		</description>
+		<property name="legalName" datatype="string" required="true" urlparam="http://schema.org/legalName" />
+		<property name="taxID" datatype="string" required="true" urlparam="https://www.inforegister.ee/onto/business/2013/r1/registrationCode" />
+		<property name="foundingDate" datatype="string" required="true" urlparam="http://schema.org/foundingDate" />
+		<property name="description" datatype="string" required="true" urlparam="http://schema.org/description" />
+		<property name="establishmentYear" datatype="string" required="true" urlparam="https://www.inforegister.ee/onto/business/2013/r1/establishmentYear" />
+		<property name="address" datatype="object" required="true" urlparam="https://www.inforegister.ee/onto/business/2013/r1/officeAddress">
+			<property name="postalCode" datatype="string" required="true" urlparam="http://schema.org/postalCode" />
+			<property name="countryCode" datatype="string" required="true" urlparam="https://www.inforegister.ee/onto/business/2013/r1/countryCode" />
+			<property name="countyName" datatype="string" required="true" urlparam="https://www.inforegister.ee/onto/business/2013/r1/countyName" />
+			<property name="cityName" datatype="string" required="true" urlparam="http://schema.org/addressLocality" />
+			<property name="street" datatype="string" required="true" urlparam="http://schema.org/streetAddress" />
+		</property>
+	</topic>
+
+	<categories>
+		<category x:iri="http://schema.org/AboutPage" />
+    </categories>
+
+</widget>

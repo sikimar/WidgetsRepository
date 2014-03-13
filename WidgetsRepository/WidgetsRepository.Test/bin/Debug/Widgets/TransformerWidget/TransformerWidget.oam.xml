@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget name="TransformerWidget" id="AutoMicrosite/TransformerWidget"
+		spec="1.0" width="0" height="0"
+		xmlns:x="http://deepweb.ut.ee/automicrosite/OpenAjaxMetadataExtension"
+		xmlns="http://openajax.org/metadata"
+		sandbox="true"
+		jsClass="AutoMicrosite.Widget.Transformer"
+	>
+
+	<content x:iri="http://deepweb.ut.ee/proxywidget/TransformerWidget.html" />
+
+	<categories>
+		<category x:iri="http://deepweb.ut.ee/Transformer" />
+    </categories>
+
+</widget>

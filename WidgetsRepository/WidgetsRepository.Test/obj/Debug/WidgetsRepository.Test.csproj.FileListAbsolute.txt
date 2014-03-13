@@ -8,3 +8,8 @@ C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsR
 C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.Test.pdb
 C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Test.exe
 C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Test.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.DAL.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.DAL.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Test.csprojResolveAssemblyReference.cache

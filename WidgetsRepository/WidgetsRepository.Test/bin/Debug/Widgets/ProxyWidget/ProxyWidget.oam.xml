@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget name="ProxyWidget" id="AutoMicrosite/ProxyWidget"
+		spec="1.0" width="0" height="0"
+		jsClass="AutoMicrosite.Widget.ProxyWidget"
+		xmlns:x="http://deepweb.ut.ee/automicrosite/OpenAjaxMetadataExtension"
+		xmlns="http://openajax.org/metadata"
+		sandbox="true"
+	>
+
+	<require type="javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js"/>
+	<require type="javascript" src="ProxyWidget.js"></require>
+
+	<content><![CDATA[ ]]></content>
+
+	<property name="wsdl" datatype="string" />
+	<property name="operation" datatype="string" />
+	<property name="proxy" datatype="string" />
+
+	<categories>
+		<category x:iri="http://deepweb.ut.ee/Datasets" />
+    </categories>
+
+</widget>

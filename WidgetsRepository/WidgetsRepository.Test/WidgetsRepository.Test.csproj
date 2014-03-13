@@ -47,6 +47,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WidgetsRepository.DAL\WidgetsRepository.DAL.csproj">
+      <Project>{7ba3d257-ff1c-4916-97ef-66c7e35e360b}</Project>
+      <Name>WidgetsRepository.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WidgetsRepository\WidgetsRepository.csproj">
+      <Project>{80cf09bd-0fd1-4aab-9af4-5656b0ba5ebd}</Project>
+      <Name>WidgetsRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

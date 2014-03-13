@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget name="TransformerWidget" id="AutoMicrosite/TransformerWidget"
+		spec="1.0" width="0" height="0"
+		xmlns:x="http://deepweb.ut.ee/automicrosite/OpenAjaxMetadataExtension"
+		xmlns="http://openajax.org/metadata">
+
+	<content src="http://automicrosite.maesalu.com:8833/TransformerWidget.html"><![CDATA[ ]]></content>
+
+	<categories>
+		<category x:iri="http://deepweb.ut.ee/Datasets" />
+    </categories>
+
+</widget>

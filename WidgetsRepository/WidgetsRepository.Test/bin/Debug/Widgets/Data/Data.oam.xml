@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget name="DataWidget" id="AutoMicrosite/Manual/Data"
+		spec="1.0" width="0" height="0" jsClass="AutoMicrosite.Widget.Data"
+		xmlns:x="http://deepweb.ut.ee/automicrosite/OpenAjaxMetadataExtension"
+		xmlns="http://openajax.org/metadata">
+
+	<library name="jQuery" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/" version="1.7.1">
+		<require type="javascript" src="jquery.min.js"/>
+	</library>
+	<require type="javascript" src="Data.js"></require>
+	<require type="text" src="data.txt" />
+
+	<!-- Empty content element is required by widget loader, somehow it does not work without -->
+	<content><![CDATA[ ]]></content>
+
+	<topic name="AutoMicrosite.LabourCost.Map.Data" type="object" publish="true">
+		<description>
+			Query data manager for data based on id and/or column, data will be
+			returned to appropriate topic.
+		</description>
+	</topic>
+	<topic name="AutoMicrosite.LabourCost.Data" type="object" publish="true">
+		<description>
+			Query data manager for data based on id and/or column, data will be
+			returned to appropriate topic.
+		</description>
+	</topic>
+   
+	<categories>
+		<category x:iri="http://deepweb.ut.ee/Datasets" />
+    </categories>
+</widget>
