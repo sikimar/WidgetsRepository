@@ -1,0 +1,10 @@
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.Test.exe.config
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.Test.exe
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.Test.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.DAL.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.dll
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.DAL.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\bin\Debug\WidgetsRepository.pdb
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Console.csprojResolveAssemblyReference.cache
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Test.exe
+C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.Test\obj\Debug\WidgetsRepository.Test.pdb

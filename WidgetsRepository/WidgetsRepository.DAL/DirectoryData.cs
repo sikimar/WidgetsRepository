@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public class DirectoryData : IFileSystemData<string>
+    public class DirectoryData : IFileSystemObject
     {
         public string Name { get; set; }
-
         public string Id { get; set; }
-
-        public object Data { get; set; }
     }
 }

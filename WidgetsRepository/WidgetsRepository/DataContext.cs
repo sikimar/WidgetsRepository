@@ -7,16 +7,21 @@ using WidgetsRepository.DAL;
 
 namespace WidgetsRepository
 {
-    public abstract class DataContext<TEntity, TId> : IDataContext<TEntity, TId> where TEntity : IEntity
+    public abstract class DataContext<TEntity> : IDataContext<TEntity> where TEntity : IEntity
     {
-        protected string _contextString;
+        private string _contextString;
 
         public DataContext(string contextString)
         {
             _contextString = contextString;
         }
 
-        public abstract TEntity Find(TId id);
+        protected string ContextString
+        {
+            get { return _contextString; }
+        }
+
+        public abstract TEntity Find(string name);
 
         public abstract IEnumerable<TEntity> GetAll();
 

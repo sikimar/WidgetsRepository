@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    //public interface IFileQuery : IDataQuery<IFileSystemData<string>, string>
-    //{
-    //}
+    public interface IFileQuery : IDataQuery<FileData, string>
+    {
+    }
 }

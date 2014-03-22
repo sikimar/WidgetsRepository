@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository
 {
-    public interface IDataContext<T, in TV>
+    public interface IDataContext<T>
     {
-        T Find(TV id);
+        T Find(string name);
         IEnumerable<T> GetAll();
         void Insert(T entity);
         void Update(T entity);

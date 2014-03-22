@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public interface IFileSystemData<T> : IData<T>
+    public interface IFileSystemObject : IDataIdentity<string>
     {
         string Name { get; set; }
     }

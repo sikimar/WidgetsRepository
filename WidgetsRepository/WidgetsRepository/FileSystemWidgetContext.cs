@@ -8,15 +8,16 @@ using WidgetsRepository.DAL;
 
 namespace WidgetsRepository
 {
-    public class FileDataContext : DataContext<Widget, string>
+    public class FileSystemWidgetContext : DataContext<Widget>
     {
-        private IDataQuery<IFileSystemData<string>, string> _fileQuery;
-        private readonly IDataQuery<IFileSystemData<string>, string> _directoryQuery;
+        private IFileQuery _fileQuery;
+        private readonly IDirectoryQuery _directoryQuery;
 
-        public FileDataContext(string contextString):base(contextString)
+        public FileSystemWidgetContext(string contextString)
+            : base(contextString)
         {
-            _fileQuery = new FileQuery(_contextString);
-            _directoryQuery = new DirectoryQuery(_contextString);
+            _fileQuery = new FileQuery(base.ContextString);
+            _directoryQuery = new DirectoryQuery(base.ContextString);
         }
 
         public override Widget Find(string id)
@@ -29,7 +30,7 @@ namespace WidgetsRepository
             widget.Guid = Guid.NewGuid();
             widget.Data = new List<IWidgetData>();
 
-            _fileQuery = new FileQuery(_contextString + @"/" + widget.Name);
+            _fileQuery = new FileQuery(base.ContextString + @"/" + widget.Name);
             var fileDataList = _fileQuery.GetAll();
             foreach (var fileData in fileDataList)
             {
@@ -44,13 +45,22 @@ namespace WidgetsRepository
 
         public override IEnumerable<Widget> GetAll()
         {
-            var fileInfoList = _fileQuery.GetAll();
+            var directoryList = _directoryQuery.GetAll();
             List<Widget> widgets = new List<Widget>();
-            foreach (var fileInfo in fileInfoList)
+            foreach (var directoryData in directoryList)
             {
                 Widget widget = new Widget();
-                widget.Id = fileInfo.Id;
-                widget.Data = new List<IWidgetData>() { new WidgetData() { Data = fileInfo.Data } };
+                widget.Id = directoryData.Id;
+                widget.Name = directoryData.Name;
+                widget.Data = new List<IWidgetData>();
+                _fileQuery = new FileQuery(base.ContextString + "\\" + directoryData.Name);
+
+                List<FileData> fileData = _fileQuery.GetAll();
+                foreach(var file in fileData)
+                {
+                    widget.Data.Add( new WidgetData() { Id = file.Id, Name = file.Name, Data = file.Data });
+                }
+
                 widgets.Add(widget);
             }
 
@@ -79,14 +89,14 @@ namespace WidgetsRepository
 
         public override void Update(Widget entity)
         {
-            IFileSystemData<string> fileData = _fileQuery.Find(entity.Id);
+            FileData fileData = _fileQuery.Find(entity.Id);
             fileData.Data = entity.Data;
             _fileQuery.Update(fileData);
         }
 
         public override void Delete(Widget entity)
         {
-            IFileSystemData<string> directoryData = _directoryQuery.Find(entity.Id);
+            DirectoryData directoryData = _directoryQuery.Find(entity.Id);
             _directoryQuery.Delete(directoryData);
         }
 

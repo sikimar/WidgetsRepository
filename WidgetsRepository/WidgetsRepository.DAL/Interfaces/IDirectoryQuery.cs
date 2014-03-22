@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public interface IData<T>
+    public interface IDirectoryQuery : IDataQuery<DirectoryData, string>
     {
-        T Id { get;set; }
-        object Data { get; set; }
     }
 }

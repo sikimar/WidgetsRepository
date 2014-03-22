@@ -43,10 +43,12 @@
     <Compile Include="DirectoryQuery.cs" />
     <Compile Include="FileData.cs" />
     <Compile Include="FileQuery.cs" />
-    <Compile Include="IData.cs" />
-    <Compile Include="IDataQuery.cs" />
-    <Compile Include="IFileSystemData.cs" />
-    <Compile Include="IFileQuery.cs" />
+    <Compile Include="FileSystemQuery.cs" />
+    <Compile Include="Interfaces\IDataIdentity.cs" />
+    <Compile Include="Interfaces\IDataQuery.cs" />
+    <Compile Include="Interfaces\IDirectoryQuery.cs" />
+    <Compile Include="Interfaces\IFileSystemObject.cs" />
+    <Compile Include="Interfaces\IFileQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
