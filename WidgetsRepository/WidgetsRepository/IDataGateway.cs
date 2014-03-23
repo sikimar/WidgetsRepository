@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository
 {
-    public interface IRepository<TEntity> where TEntity : IEntity
+    public interface IDataGateway<TEntity> where TEntity : IEntity
     {
         TEntity Find(string name);
-        TEntity FindByGuid(Guid guid);
-        ICollection<TEntity> FindAll();
-
-        void Delete(TEntity entity);
+        IEnumerable<TEntity> GetAll();
         void Insert(TEntity entity);
         void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }

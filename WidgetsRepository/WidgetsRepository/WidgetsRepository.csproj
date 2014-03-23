@@ -39,14 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectoryGateway.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="DirectoryMapper.cs" />
+    <Compile Include="FileGateway.cs" />
+    <Compile Include="FileMapper.cs" />
+    <Compile Include="FileSystemGateway.cs" />
+    <Compile Include="FileSystemMapper.cs" />
     <Compile Include="FileSystemWidgetContext.cs" />
     <Compile Include="IDataContext.cs" />
+    <Compile Include="IDataGateway.cs" />
+    <Compile Include="IDataMapper.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IWidgetRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Widget.cs" />
     <Compile Include="WidgetData.cs" />
+    <Compile Include="WidgetDataMapper.cs" />
+    <Compile Include="WidgetMapper.cs" />
     <Compile Include="WidgetsRepository.cs" />
   </ItemGroup>
   <ItemGroup>

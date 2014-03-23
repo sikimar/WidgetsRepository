@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public abstract class FileSystemQuery
+    public abstract class FileSystemQuery<TFileSystemObject> : IDataQuery<TFileSystemObject, string>
+        where TFileSystemObject : IFileSystemObject
     {
         /// <summary>
         /// Working directory
@@ -35,5 +36,15 @@ namespace WidgetsRepository.DAL
             string filePath = Path.Combine(_rootDirectory, name);
             return new FileInfo(filePath);
         }
+
+        public abstract List<TFileSystemObject> GetAll();
+
+        public abstract TFileSystemObject Find(string id);
+
+        public abstract void Insert(TFileSystemObject data);
+
+        public abstract void Update(TFileSystemObject data);
+
+        public abstract void Delete(TFileSystemObject data);
     }
 }

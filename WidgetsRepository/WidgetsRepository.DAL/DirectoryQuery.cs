@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public class DirectoryQuery : FileSystemQuery, IDirectoryQuery
+    public class DirectoryQuery : FileSystemQuery<DirectoryData>
     {
         public DirectoryQuery(string directory):base(directory)
         {
         }
 
-        public List<DirectoryData> GetAll()
+        public override List<DirectoryData> GetAll()
         {
             DirectoryInfo directoryInfo = GetDirectoryInfo(base.RootDirectory);
             List<DirectoryInfo> files = directoryInfo.Exists ? directoryInfo.GetDirectories().ToList() : new List<DirectoryInfo>();
@@ -21,14 +21,14 @@ namespace WidgetsRepository.DAL
             return MapList(files);
         }
 
-        public DirectoryData Find(string name)
+        public override DirectoryData Find(string name)
         {
             DirectoryInfo directoryInfo = GetDirectoryInfo(name);
 
             return directoryInfo.Exists ? Map(directoryInfo) : null;
         }
 
-        public void Insert(DirectoryData data)
+        public override void Insert(DirectoryData data)
         {
             DirectoryInfo directoryInfo = GetDirectoryInfo(data.Name);
             if (!directoryInfo.Exists)
@@ -37,12 +37,12 @@ namespace WidgetsRepository.DAL
             }
         }
 
-        public void Update(DirectoryData data)
+        public override void Update(DirectoryData data)
         {
             Insert(data);
         }
 
-        public void Delete(DirectoryData data)
+        public override void Delete(DirectoryData data)
         {
             DirectoryInfo directoryInfo = GetDirectoryInfo(data.Name);
             if (directoryInfo.Exists)
@@ -53,10 +53,7 @@ namespace WidgetsRepository.DAL
 
         private DirectoryData Map(DirectoryInfo directoryInfo)
         {
-            DirectoryData data = new DirectoryData();
-            data.Id = directoryInfo.FullName;
-            data.Name = directoryInfo.Name;
-
+            DirectoryData data = new DirectoryData(directoryInfo.FullName, directoryInfo.Name);
             return data;
         }
 

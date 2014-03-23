@@ -28,7 +28,7 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestAddDirectory()
         {
-            DirectoryData dd = new DirectoryData(){Name = _directoryName};
+            DirectoryData dd = new DirectoryData("id", _directoryName);
             _directoryQuery.Insert(dd);
 
             Assert.IsTrue(new DirectoryInfo(Path.Combine(_workDirectory, _directoryName)).Exists);
@@ -37,7 +37,7 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestAddDirectoryExisting()
         {
-            DirectoryData dd = new DirectoryData() { Name = _directoryName };
+            DirectoryData dd = new DirectoryData("id", _directoryName);
             _directoryQuery.Insert(dd);
 
             Assert.IsTrue(new DirectoryInfo(Path.Combine(_workDirectory, _directoryName)).Exists);
@@ -54,10 +54,11 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestFindDirectoryNotExisting()
         {
-            DirectoryData dd = (DirectoryData)_directoryQuery.Find("NotExistingDirectory");
+            string notExistingDirectoryName = "NotExistingDirectory";
+            DirectoryData dd = (DirectoryData)_directoryQuery.Find(notExistingDirectoryName);
 
             Assert.IsNull(dd);
-            Assert.IsFalse(new DirectoryInfo(Path.Combine(_workDirectory, "NotExistingDirectory")).Exists);
+            Assert.IsFalse(new DirectoryInfo(Path.Combine(_workDirectory, notExistingDirectoryName)).Exists);
         }
 
         [TestMethod]
@@ -71,7 +72,7 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestDeleteDirectory()
         {
-            DirectoryData dd = new DirectoryData() { Name = _directoryName };
+            DirectoryData dd = new DirectoryData("id", _directoryName);
             _directoryQuery.Delete(dd);
 
             Assert.IsFalse(new DirectoryInfo(Path.Combine(_workDirectory, _directoryName)).Exists);
@@ -80,10 +81,11 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestDeleteDirectoryNotExisting()
         {
-            DirectoryData dd = new DirectoryData() { Name = "NotExistingDirectory" };
+            string notExistingDirectoryName = "NotExistingDirectory";
+            DirectoryData dd = new DirectoryData("id", notExistingDirectoryName);
             _directoryQuery.Delete(dd);
 
-            Assert.IsFalse(new DirectoryInfo(Path.Combine(_workDirectory, "NotExistingDirectory")).Exists);
+            Assert.IsFalse(new DirectoryInfo(Path.Combine(_workDirectory, notExistingDirectoryName)).Exists);
         }
 
         [TestMethod]

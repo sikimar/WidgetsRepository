@@ -8,6 +8,12 @@ namespace WidgetsRepository.DAL
 {
     public class DirectoryData : IFileSystemObject
     {
+        public DirectoryData(string id, string name) 
+        {
+            Id = id;
+            Name = name;
+        }
+
         public string Name { get; set; }
         public string Id { get; set; }
     }

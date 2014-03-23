@@ -8,16 +8,16 @@ namespace WidgetsRepository
 {
     public class WidgetsRepository : IRepository<Widget>
     {
-        private DataContext<Widget> _context;
+        private DataContext _context;
 
         private List<Widget> _widgets;
 
-        public WidgetsRepository(DataContext<Widget> context) 
+        public WidgetsRepository(DataContext context) 
         {
             _context = context;
         }
 
-        public DataContext<Widget> Context
+        public DataContext Context
         {
             get { return _context; }
         }
@@ -32,7 +32,7 @@ namespace WidgetsRepository
             Widget foundWidget = _widgets.Find(x => x.Name == name);
             if(foundWidget == null)
             {
-                foundWidget = _context.Find(name);
+                //foundWidget = _context.Find(name);
 
                 if (foundWidget != null)
                 {
@@ -61,15 +61,15 @@ namespace WidgetsRepository
                 _widgets = new List<Widget>();
             }
 
-            List<Widget> foundWidgets = _context.GetAll().ToList();
+            //List<Widget> foundWidgets = _context.GetAll().ToList();
 
-            foreach (Widget widget in foundWidgets) 
-            {
-                if(!_widgets.Exists(x => x.Name == widget.Name))
-                {
-                    _widgets.Add(widget);
-                }
-            }
+            //foreach (Widget widget in foundWidgets) 
+            //{
+            //    if(!_widgets.Exists(x => x.Name == widget.Name))
+            //    {
+            //        _widgets.Add(widget);
+            //    }
+            //}
 
             return _widgets;
         }
@@ -79,7 +79,7 @@ namespace WidgetsRepository
             if (_widgets.Exists(x => x.Guid == widget.Guid)) 
             {
                 _widgets.Remove(widget);
-                _context.Delete(widget);
+                //_context.Delete(widget);
             }
         }
 
@@ -88,7 +88,7 @@ namespace WidgetsRepository
             if (!_widgets.Exists(x => x.Guid == widget.Guid)) 
             {
                 _widgets.Add(widget);
-                _context.Insert(widget);
+                //_context.Insert(widget);
             }
         }
 
@@ -98,10 +98,10 @@ namespace WidgetsRepository
             if (oldWidget != null)
             {
                 _widgets.Remove(oldWidget);
-                _context.Delete(oldWidget);
+                //_context.Delete(oldWidget);
                 
                 _widgets.Add(widget);
-                _context.Update(widget);
+                //_context.Update(widget);
             }
         }
     }

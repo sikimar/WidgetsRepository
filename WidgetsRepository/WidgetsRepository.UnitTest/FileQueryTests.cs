@@ -30,7 +30,7 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestAdd()
         {
-            FileData fd = new FileData() { Name = _fileName, Data = _fileData };
+            FileData fd = new FileData("id", _fileName, _fileData);
             _fileQuery.Insert(fd);
             FileInfo fi = new FileInfo(Path.Combine(_workDirectory,_fileName));
             Assert.IsTrue(fi.Exists);
@@ -49,7 +49,8 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestFindNotExist()
         {
-            FileData fd = (FileData)_fileQuery.Find("somefilethatdoesnotexist.txt");
+            string notExistingFileName = "somefilethatdoesnotexist.txt";
+            FileData fd = (FileData)_fileQuery.Find(notExistingFileName);
             Assert.IsNull(fd);
         }
 
@@ -63,7 +64,7 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestDelete()
         {
-            FileData fd = new FileData() { Name = _fileName, Data = _fileData };
+            FileData fd = new FileData("id", _fileName, _fileData);
             _fileQuery.Delete(fd);
 
             Assert.IsFalse(new FileInfo(Path.Combine(_workDirectory, _fileName)).Exists);
@@ -72,10 +73,11 @@ namespace WidgetsRepository.UnitTest
         [TestMethod]
         public void TestDeleteNotExist()
         {
-            FileData fd = new FileData() { Name = "somefilethatdoesnotexist.txt", Data = _fileData };
+            string notExistingFileName = "somefilethatdoesnotexist.txt";
+            FileData fd = new FileData("id", notExistingFileName, _fileData);
             _fileQuery.Delete(fd);
 
-            Assert.IsFalse(new FileInfo(Path.Combine(_workDirectory, _fileName)).Exists);
+            Assert.IsFalse(new FileInfo(Path.Combine(_workDirectory, notExistingFileName)).Exists);
         }
 
         [TestMethod]

@@ -6,4 +6,3 @@ C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsR
 C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\bin\Debug\WidgetsRepository.DAL.pdb
 C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\obj\Debug\WidgetsRepository.DAL.dll
 C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\obj\Debug\WidgetsRepository.DAL.pdb
-C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.DAL\obj\Debug\WidgetsRepository.DAL.csprojResolveAssemblyReference.cache

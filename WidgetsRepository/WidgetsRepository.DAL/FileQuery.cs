@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public class FileQuery : FileSystemQuery, IFileQuery
+    public class FileQuery : FileSystemQuery<FileData>
     {
         public FileQuery(string directory):base(directory)
         {
         }
 
-        public List<FileData> GetAll()
+        public override List<FileData> GetAll()
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(base.RootDirectory);
             List<FileInfo> files = directoryInfo.Exists ? directoryInfo.GetFiles().ToList() : new List<FileInfo>();
@@ -21,14 +21,14 @@ namespace WidgetsRepository.DAL
             return MapList(files);
         }
 
-        public FileData Find(string filename)
+        public override FileData Find(string filename)
         {
             FileInfo fileInfo = GetFileInfo(filename);
 
             return fileInfo.Exists ? Map(fileInfo) : null;
         }
 
-        public void Insert(FileData data)
+        public override void Insert(FileData data)
         {
             string filename = data.Name;
             FileInfo fileInfo = GetFileInfo(filename);
@@ -36,12 +36,12 @@ namespace WidgetsRepository.DAL
             SaveContent(fileInfo, data.Data.ToString());
         }
 
-        public void Update(FileData data)
+        public override void Update(FileData data)
         {
             Insert(data);
         }
 
-        public void Delete(FileData data)
+        public override void Delete(FileData data)
         {
             string filename = data.Name;
             FileInfo fileInfo = GetFileInfo(filename);
@@ -54,12 +54,12 @@ namespace WidgetsRepository.DAL
 
         private FileData Map(FileInfo fileInfo)
         {
-            FileData data = new FileData();
-            data.Id = fileInfo.FullName;
-            data.Name = fileInfo.Name;
-            data.Data = ReadContent(fileInfo);
+            string id = fileInfo.FullName;
+            string name = fileInfo.Name;
+            string data = ReadContent(fileInfo);
 
-            return data;
+            FileData fileData = new FileData(id, name, data);
+            return fileData;
         }
 
         private List<FileData> MapList(IEnumerable<FileInfo> files)
@@ -74,7 +74,7 @@ namespace WidgetsRepository.DAL
             return fileData;
         }
 
-        private object ReadContent(FileInfo fileInfo)
+        private string ReadContent(FileInfo fileInfo)
         {
             using (StreamReader streamReader = fileInfo.OpenText())
             {
