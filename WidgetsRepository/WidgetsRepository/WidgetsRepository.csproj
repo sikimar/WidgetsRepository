@@ -39,25 +39,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectoryGateway.cs" />
-    <Compile Include="DataContext.cs" />
-    <Compile Include="DirectoryMapper.cs" />
-    <Compile Include="FileGateway.cs" />
-    <Compile Include="FileMapper.cs" />
-    <Compile Include="FileSystemGateway.cs" />
-    <Compile Include="FileSystemMapper.cs" />
-    <Compile Include="FileSystemWidgetContext.cs" />
-    <Compile Include="IDataContext.cs" />
-    <Compile Include="IDataGateway.cs" />
-    <Compile Include="IDataMapper.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="IWidgetRepository.cs" />
+    <Compile Include="DataContext\FileSystemWidgetDataContext.cs" />
+    <Compile Include="DataContext\IWidgetDataConteiner.cs" />
+    <Compile Include="DataContext\IWidgetConteiner.cs" />
+    <Compile Include="DataContext\ILayoutConteiner.cs" />
+    <Compile Include="DataContext\WidgetDataContext.cs" />
+    <Compile Include="DataGateway\DataGateway.cs" />
+    <Compile Include="DataMapper\DataMapper.cs" />
+    <Compile Include="DataGateway\DirectoryGateway.cs" />
+    <Compile Include="DataContext\DataContext.cs" />
+    <Compile Include="DataMapper\DirectoryMapper.cs" />
+    <Compile Include="DataGateway\FileGateway.cs" />
+    <Compile Include="DataMapper\FileMapper.cs" />
+    <Compile Include="DataGateway\FileSystemGateway.cs" />
+    <Compile Include="DataMapper\FileSystemMapper.cs" />
+    <Compile Include="DataContext\FileSystemWidgetContext.cs" />
+    <Compile Include="DataContext\IDataContext.cs" />
+    <Compile Include="DataGateway\IDataGateway.cs" />
+    <Compile Include="DataMapper\IDataMapper.cs" />
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Entities\Layout.cs" />
+    <Compile Include="Entities\LayoutMapper.cs" />
+    <Compile Include="Repository\IWidgetRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Widget.cs" />
-    <Compile Include="WidgetData.cs" />
-    <Compile Include="WidgetDataMapper.cs" />
-    <Compile Include="WidgetMapper.cs" />
-    <Compile Include="WidgetsRepository.cs" />
+    <Compile Include="Entities\Widget.cs" />
+    <Compile Include="Entities\WidgetData.cs" />
+    <Compile Include="Entities\WidgetDataMapper.cs" />
+    <Compile Include="Entities\WidgetMapper.cs" />
+    <Compile Include="Repository\WidgetsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WidgetsRepository.DAL\WidgetsRepository.DAL.csproj">
@@ -65,6 +74,7 @@
       <Name>WidgetsRepository.DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

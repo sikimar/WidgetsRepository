@@ -23,4 +23,10 @@ namespace WidgetsRepository
         string Name { get; set; }
         object Data { get; set; }
     }
+
+    public interface ILayout : IEntity
+    {
+        string Name { get; set; }
+        string LayoutFile { get; set; }
+    }
 }

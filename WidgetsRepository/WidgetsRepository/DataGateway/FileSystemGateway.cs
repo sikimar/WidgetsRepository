@@ -8,7 +8,7 @@ using WidgetsRepository.DAL;
 
 namespace WidgetsRepository
 {
-    public abstract class FileSystemGateway<TFileSystemObject,TEntity> : IDataGateway<TEntity> 
+    public abstract class FileSystemGateway<TFileSystemObject, TEntity> : DataGateway<TEntity>
         where TFileSystemObject : class, IFileSystemObject
         where TEntity : IEntity
     {
@@ -21,13 +21,13 @@ namespace WidgetsRepository
             _mapper = mapper;
         }
 
-        public TEntity Find(string name)
+        public override TEntity Find(string name)
         {
             TFileSystemObject fileData = _query.Find(name);
             return _mapper.MapToEntity(fileData);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public override IEnumerable<TEntity> GetAll()
         {
             List<TFileSystemObject> fileDataList = _query.GetAll();
             List<TEntity> entitiesList = new List<TEntity>();
@@ -40,19 +40,19 @@ namespace WidgetsRepository
             return entitiesList;
         }
 
-        public void Insert(TEntity entity)
+        public override void Insert(TEntity entity)
         {
             TFileSystemObject fileData = _mapper.MapToFileSystemObject(entity);
             _query.Insert(fileData);
         }
 
-        public void Update(TEntity entity)
+        public override void Update(TEntity entity)
         {
             TFileSystemObject fileData = _mapper.MapToFileSystemObject(entity);
             _query.Update(fileData);
         }
 
-        public void Delete(TEntity entity)
+        public override void Delete(TEntity entity)
         {
             TFileSystemObject fileData = _mapper.MapToFileSystemObject(entity);
             _query.Delete(fileData);

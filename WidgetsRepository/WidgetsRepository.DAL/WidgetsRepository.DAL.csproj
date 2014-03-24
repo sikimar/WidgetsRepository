@@ -39,15 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataQuery.cs" />
-    <Compile Include="DirectoryData.cs" />
-    <Compile Include="DirectoryQuery.cs" />
-    <Compile Include="FileData.cs" />
-    <Compile Include="FileQuery.cs" />
-    <Compile Include="FileSystemQuery.cs" />
-    <Compile Include="Interfaces\IDataIdentity.cs" />
-    <Compile Include="Interfaces\IDataQuery.cs" />
-    <Compile Include="Interfaces\IFileSystemObject.cs" />
+    <Compile Include="DataQuery\DataQuery.cs" />
+    <Compile Include="DataObjects\DirectoryData.cs" />
+    <Compile Include="DataQuery\DirectoryQuery.cs" />
+    <Compile Include="DataObjects\FileData.cs" />
+    <Compile Include="DataQuery\FileQuery.cs" />
+    <Compile Include="DataQuery\FileSystemQuery.cs" />
+    <Compile Include="DataObjects\IDataIdentity.cs" />
+    <Compile Include="DataQuery\IDataQuery.cs" />
+    <Compile Include="DataObjects\IFileSystemObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
