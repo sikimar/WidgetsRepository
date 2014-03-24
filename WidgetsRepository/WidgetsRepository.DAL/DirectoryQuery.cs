@@ -13,60 +13,56 @@ namespace WidgetsRepository.DAL
         {
         }
 
-        public override List<DirectoryData> GetAll()
+        protected override FileSystemInfo GetInfo(string name)
         {
-            DirectoryInfo directoryInfo = GetDirectoryInfo(base.RootDirectory);
-            List<DirectoryInfo> files = directoryInfo.Exists ? directoryInfo.GetDirectories().ToList() : new List<DirectoryInfo>();
-
-            return MapList(files);
+            string path = Path.Combine(this.RootDirectory, name);
+            return new DirectoryInfo(path);
         }
 
-        public override DirectoryData Find(string name)
+        protected override List<FileSystemInfo> GetList(DirectoryInfo directoryInfo)
         {
-            DirectoryInfo directoryInfo = GetDirectoryInfo(name);
-
-            return directoryInfo.Exists ? Map(directoryInfo) : null;
+            return directoryInfo.GetDirectories().Cast<FileSystemInfo>().ToList();
         }
 
-        public override void Insert(DirectoryData data)
+        protected override void Create(FileSystemInfo info)
         {
-            DirectoryInfo directoryInfo = GetDirectoryInfo(data.Name);
-            if (!directoryInfo.Exists)
+            DirectoryInfo directoryInfo = ConvertToDirectoryInfo(info);
+            directoryInfo.Create();
+        }
+
+        protected override void Delete(FileSystemInfo info)
+        {
+            DirectoryInfo directoryInfo = ConvertToDirectoryInfo(info);
+            directoryInfo.Delete(true);
+        }
+
+        protected override DirectoryData Map(FileSystemInfo info)
+        {
+            DirectoryInfo directoryInfo = ConvertToDirectoryInfo(info);
+            return new DirectoryData(directoryInfo.FullName, directoryInfo.Name);
+        }
+
+        protected override List<DirectoryData> MapToList(IEnumerable<FileSystemInfo> list)
+        {
+            List<DirectoryData> directoryDataList = new List<DirectoryData>();
+            foreach (FileSystemInfo info in list)
             {
-                directoryInfo.Create();
-            }
-        }
-
-        public override void Update(DirectoryData data)
-        {
-            Insert(data);
-        }
-
-        public override void Delete(DirectoryData data)
-        {
-            DirectoryInfo directoryInfo = GetDirectoryInfo(data.Name);
-            if (directoryInfo.Exists)
-            {
-                directoryInfo.Delete(true);
-            }
-        }
-
-        private DirectoryData Map(DirectoryInfo directoryInfo)
-        {
-            DirectoryData data = new DirectoryData(directoryInfo.FullName, directoryInfo.Name);
-            return data;
-        }
-
-        private List<DirectoryData> MapList(IEnumerable<DirectoryInfo> directories)
-        {
-            List<DirectoryData> fileData = new List<DirectoryData>();
-            foreach (DirectoryInfo directoryInfo in directories)
-            {
-                DirectoryData data = Map(directoryInfo);
-                fileData.Add(data);
+                DirectoryData data = Map(info);
+                directoryDataList.Add(data);
             }
 
-            return fileData;
+            return directoryDataList;
+        }
+
+        private DirectoryInfo ConvertToDirectoryInfo(FileSystemInfo info)
+        {
+            DirectoryInfo directoryInfo = info as DirectoryInfo;
+            if (directoryInfo == null)
+            {
+                throw new ArgumentException("DirectoryQuery: Entered parameter is not type of DirectoryInfo.");
+            }
+
+            return directoryInfo;
         }
     }
 

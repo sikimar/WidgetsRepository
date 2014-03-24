@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataQuery.cs" />
     <Compile Include="DirectoryData.cs" />
     <Compile Include="DirectoryQuery.cs" />
     <Compile Include="FileData.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using WidgetsRepository.DAL;
 namespace WidgetsRepository
 {
     public abstract class FileSystemGateway<TFileSystemObject,TEntity> : IDataGateway<TEntity> 
-        where TFileSystemObject : IFileSystemObject
+        where TFileSystemObject : class, IFileSystemObject
         where TEntity : IEntity
     {
         FileSystemMapper<TFileSystemObject, TEntity> _mapper;

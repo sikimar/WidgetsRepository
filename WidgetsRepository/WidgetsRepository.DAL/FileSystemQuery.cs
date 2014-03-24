@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository.DAL
 {
-    public abstract class FileSystemQuery<TFileSystemObject> : IDataQuery<TFileSystemObject, string>
-        where TFileSystemObject : IFileSystemObject
+    public abstract class FileSystemQuery<TFileSystemObject> : DataQuery<TFileSystemObject, string>
+        where TFileSystemObject : class, IFileSystemObject
     {
         /// <summary>
         /// Working directory
         /// </summary>
-        private string _rootDirectory;
+        private readonly string _rootDirectory;
 
         public FileSystemQuery(string directory) 
         {
@@ -25,26 +25,53 @@ namespace WidgetsRepository.DAL
             get { return _rootDirectory; }
         }
 
-        protected DirectoryInfo GetDirectoryInfo(string name)
+        protected abstract FileSystemInfo GetInfo(string name);
+        protected abstract List<FileSystemInfo> GetList(DirectoryInfo info);
+        protected abstract void Create(FileSystemInfo info);
+        protected abstract TFileSystemObject Map(FileSystemInfo info);
+        protected abstract List<TFileSystemObject> MapToList(IEnumerable<FileSystemInfo> list);
+
+        protected virtual void Delete(FileSystemInfo info)
         {
-            string directoryPath = Path.Combine(_rootDirectory, name);
-            return new DirectoryInfo(directoryPath);
+            info.Delete();
         }
 
-        protected FileInfo GetFileInfo(string name)
+        public override List<TFileSystemObject> GetAll()
         {
-            string filePath = Path.Combine(_rootDirectory, name);
-            return new FileInfo(filePath);
+            DirectoryInfo info = new DirectoryInfo(this.RootDirectory);
+            List<FileSystemInfo> list = GetList(info);
+
+            return list != null && list.Count > 0 ?  MapToList(list) : new List<TFileSystemObject>();
         }
 
-        public abstract List<TFileSystemObject> GetAll();
+        public override TFileSystemObject Find(string name)
+        {
+            FileSystemInfo info = GetInfo(name);
+            return info.Exists ? Map(info) : null;
+        }
 
-        public abstract TFileSystemObject Find(string id);
+        public override void Insert(TFileSystemObject data)
+        {
+            string name = data.Name;
+            FileSystemInfo info = GetInfo(name);
+            if (!info.Exists)
+            {
+                this.Create(info);
+            }
+        }
 
-        public abstract void Insert(TFileSystemObject data);
+        public override void Update(TFileSystemObject data)
+        {
+            Insert(data);
+        }
 
-        public abstract void Update(TFileSystemObject data);
-
-        public abstract void Delete(TFileSystemObject data);
+        public override void Delete(TFileSystemObject data)
+        {
+            FileSystemInfo info = GetInfo(data.Name);
+            if (info.Exists)
+            {
+                this.Delete(info);
+            }
+        }
     }
 }

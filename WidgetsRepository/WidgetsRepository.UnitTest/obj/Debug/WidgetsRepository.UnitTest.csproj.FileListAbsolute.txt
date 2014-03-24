@@ -5,3 +5,10 @@ C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepo
 C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\obj\Debug\WidgetsRepository.UnitTest.csprojResolveAssemblyReference.cache
 C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\obj\Debug\WidgetsRepository.UnitTest.dll
 C:\Users\Sigmar\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\obj\Debug\WidgetsRepository.UnitTest.pdb
+C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\bin\Debug\WidgetsRepository.UnitTest.dll
+C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\bin\Debug\WidgetsRepository.UnitTest.pdb
+C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\bin\Debug\WidgetsRepository.DAL.dll
+C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\bin\Debug\WidgetsRepository.DAL.pdb
+C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\obj\Debug\WidgetsRepository.UnitTest.csprojResolveAssemblyReference.cache
+C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\obj\Debug\WidgetsRepository.UnitTest.dll
+C:\Users\eesigsemm\Documents\GitHub\WidgetsRepository\WidgetsRepository\WidgetsRepository.UnitTest\obj\Debug\WidgetsRepository.UnitTest.pdb

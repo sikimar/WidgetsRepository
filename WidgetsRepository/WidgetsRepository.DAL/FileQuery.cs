@@ -13,65 +13,62 @@ namespace WidgetsRepository.DAL
         {
         }
 
-        public override List<FileData> GetAll()
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(base.RootDirectory);
-            List<FileInfo> files = directoryInfo.Exists ? directoryInfo.GetFiles().ToList() : new List<FileInfo>();
-
-            return MapList(files);
-        }
-
-        public override FileData Find(string filename)
-        {
-            FileInfo fileInfo = GetFileInfo(filename);
-
-            return fileInfo.Exists ? Map(fileInfo) : null;
-        }
-
         public override void Insert(FileData data)
         {
-            string filename = data.Name;
-            FileInfo fileInfo = GetFileInfo(filename);
+            base.Insert(data);
 
-            SaveContent(fileInfo, data.Data.ToString());
+            FileInfo fileInfo = ConvertToFileInfo(GetInfo(data.Name));
+            SaveContent(fileInfo, Convert.ToString(data.Data));
         }
 
-        public override void Update(FileData data)
+        protected override FileSystemInfo GetInfo(string name)
         {
-            Insert(data);
+            string path = Path.Combine(this.RootDirectory, name);
+            return new FileInfo(path);
         }
 
-        public override void Delete(FileData data)
+        protected override List<FileSystemInfo> GetList(DirectoryInfo directoryInfo)
         {
-            string filename = data.Name;
-            FileInfo fileInfo = GetFileInfo(filename);
-
-            if (fileInfo.Exists)
-            {
-                fileInfo.Delete();
-            }
+            return directoryInfo.GetFiles().Cast<FileSystemInfo>().ToList();
         }
 
-        private FileData Map(FileInfo fileInfo)
+        protected override void Create(FileSystemInfo info)
         {
+            // Do nothing
+        }
+
+        protected override FileData Map(FileSystemInfo info)
+        {
+            FileInfo fileInfo = ConvertToFileInfo(info);
+
             string id = fileInfo.FullName;
             string name = fileInfo.Name;
             string data = ReadContent(fileInfo);
 
-            FileData fileData = new FileData(id, name, data);
-            return fileData;
+            return new FileData(id, name, data);
         }
 
-        private List<FileData> MapList(IEnumerable<FileInfo> files)
+        protected override List<FileData> MapToList(IEnumerable<FileSystemInfo> list)
         {
-            List<FileData> fileData = new List<FileData>();
-            foreach (FileInfo fileInfo in files)
+            List<FileData> fileDataList = new List<FileData>();
+            foreach (FileSystemInfo info in list)
             {
-                FileData data = Map(fileInfo);
-                fileData.Add(data);
+                FileData data = Map(info);
+                fileDataList.Add(data);
             }
 
-            return fileData;
+            return fileDataList;
+        }
+
+        private FileInfo ConvertToFileInfo(FileSystemInfo info)
+        {
+            FileInfo fileInfo = info as FileInfo;
+            if (fileInfo == null)
+            {
+                throw new ArgumentException("FileQuery: Entered parameter is not type of FileInfo.");
+            }
+
+            return fileInfo;
         }
 
         private string ReadContent(FileInfo fileInfo)
@@ -88,27 +85,6 @@ namespace WidgetsRepository.DAL
             {
                 streamWriter.Write(content);
             }
-        }
-
-        private bool IsBinaryFile(string filePath, int sampleSize = 10240)
-        {
-            if (!File.Exists(filePath))
-                throw new ArgumentException("File path is not valid", "filePath");
-
-            var buffer = new char[sampleSize];
-            string sampleContent;
-
-            using (var sr = new StreamReader(filePath))
-            {
-                int length = sr.Read(buffer, 0, sampleSize);
-                sampleContent = new string(buffer, 0, length);
-            }
-
-            //Look for 4 consecutive binary zeroes
-            if (sampleContent.Contains("\0\0\0\0"))
-                return true;
-
-            return false;
         }
     }
 }
