@@ -12,10 +12,11 @@ namespace WidgetsRepository
         string Id { get; set; }
     }
 
-    public interface IWidget : IEntity
+    public interface IWidget<TWidgetData> : IEntity
+        where TWidgetData : IWidgetData
     {
         string Name { get; set; }
-        List<IWidgetData> Data { get; set; }
+        List<TWidgetData> Data { get; set; }
     }
 
     public interface IWidgetData : IEntity

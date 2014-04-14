@@ -41,10 +41,42 @@ namespace WidgetsRepository.Test
 
             //fq.GetAll();
 
-            WidgetsRepository widgetR = new WidgetsRepository(new FileSystemWidgetContext(widgetsDir));
 
-            List<Widget> widgets = widgetR.FindAll().ToList();
+            WidgetDataContext wdc = new WidgetDataContext(widgetsDir);
+            List<Widget> widgets = wdc.Widgets;
 
+            Widget newWid1 = new Widget(null, "Hapukurk1");
+            WidgetData wdata1 = new WidgetData(null, "Add1.txt", "Data");
+            newWid1.Data.Add(wdata1);
+            WidgetData wdata2 = new WidgetData(null, "Add2.txt", "Data");
+            newWid1.Data.Add(wdata2);
+
+            Widget newWid2 = new Widget(null, "Hapukurk2");
+            WidgetData wdata11 = new WidgetData(null, "Add1.txt", "Data");
+            newWid2.Data.Add(wdata11);
+            WidgetData wdata22 = new WidgetData(null, "Add2.txt", "Data");
+            newWid2.Data.Add(wdata22);
+
+            Widget newWid3 = new Widget(null, "Hapukurk3");
+            WidgetData wdata111 = new WidgetData(null, "Add1.txt", "Data");
+            newWid3.Data.Add(wdata111);
+            WidgetData wdata222 = new WidgetData(null, "Add2.txt", "Data");
+            newWid3.Data.Add(wdata222);
+
+            wdc.Add(newWid1);
+            wdc.Add(newWid2);
+            wdc.Add(newWid3);
+
+            List<Widget> widgets1 = wdc.Widgets;
+            Widget removeWid = widgets1[14];
+            removeWid.Name = "Hernes";
+            wdc.Update(removeWid);
+            Widget removeSaveWid = widgets1[2];
+            wdc.Delete(removeSaveWid);
+            Widget chan = widgets1[1];
+            chan.Name = "OHOO";
+            chan.Data.Add(new WidgetData(null, "TESTq1.rrt", "DATA TEST"));
+            wdc.Update(chan);
 
             Console.WriteLine();
             Console.ReadLine();

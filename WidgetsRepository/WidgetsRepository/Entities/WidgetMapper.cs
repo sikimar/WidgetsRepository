@@ -18,8 +18,8 @@ namespace WidgetsRepository
 
         public override Widget MapToEntity(DirectoryData fileSystemObject)
         {
-            Widget widgetData = new Widget(fileSystemObject.Id, fileSystemObject.Name);
-            return widgetData;
+            Widget widget = new Widget(fileSystemObject.Id, fileSystemObject.Name);
+            return widget;
         }
     }
 }

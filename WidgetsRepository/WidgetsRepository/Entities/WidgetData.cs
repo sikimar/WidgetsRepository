@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository
 {
+    [Serializable]
     public class WidgetData : IWidgetData
     {
         public WidgetData(string id, string name, object data)

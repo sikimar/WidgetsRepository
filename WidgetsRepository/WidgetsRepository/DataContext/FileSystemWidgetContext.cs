@@ -25,7 +25,7 @@ namespace WidgetsRepository
             var directroyData = _directoryQuery.Find(id);
 
             Widget widget = new Widget(directroyData.Id, directroyData.Name);
-            widget.Data = new List<IWidgetData>();
+            widget.Data = new List<WidgetData>();
 
             _fileQuery = new FileQuery(base.ContextString + @"/" + widget.Name);
             var fileDataList = _fileQuery.GetAll();
@@ -44,7 +44,7 @@ namespace WidgetsRepository
             foreach (var directoryData in directoryList)
             {
                 Widget widget = new Widget(directoryData.Id, directoryData.Name);
-                widget.Data = new List<IWidgetData>();
+                widget.Data = new List<WidgetData>();
                 _fileQuery = new FileQuery(base.ContextString + "\\" + directoryData.Name);
 
                 List<FileData> fileData = _fileQuery.GetAll();

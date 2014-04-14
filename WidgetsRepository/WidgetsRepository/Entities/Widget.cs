@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace WidgetsRepository
 {
-    public class Widget : IWidget
+    [Serializable]
+    public class Widget : IWidget<WidgetData>
     {
         public Widget(string id, string name) 
         {
             Id = id;
             Name = name;
             Guid = Guid.NewGuid();
+            Data = new List<WidgetData>();
         }
 
         public string Id { get; set; }
         public Guid Guid {get; set;}
         public string Name { get; set; }
-        public List<IWidgetData> Data { get; set; }
+        public List<WidgetData> Data { get; set; }
     }
 }
